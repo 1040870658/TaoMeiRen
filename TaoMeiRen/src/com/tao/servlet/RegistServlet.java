@@ -27,6 +27,8 @@ public class RegistServlet extends HttpServlet {
 		
 		/*
 		 * 1. 封装表单数据（封装到User对象中）
+		 * User里面的属性可以随便增加，同时在jsp页面上增加相应属性的标签
+		 *因为toBean()是将Map里面的key值对应到User里面的变量！！！！
 		 */
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
 		
