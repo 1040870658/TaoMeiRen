@@ -1,0 +1,114 @@
+//使用MySQL数据库
+
+//创建数据库
+create database TaoMeiRen;
+
+
+//用户表
+create table user
+( 
+email varchar(50) PRIMARY KEY, 
+passwd varchar(20) NOT NULL, 
+account double(15,2) NOT NULL default 0.00,
+buyerCredit double(15,2) NOT NULL default 100.00,
+sellerCredit double(15,2) NOT NULL default 100.00
+)
+
+//商品表
+create table commodity(
+    commodityID int PRIMARY KEY AUTO_INCREMENT,
+    imageURL text,
+    mailOfseller varchar(50) NOT NULL,
+    price double(15,2) default 0.00,
+    description text,
+    name varchar(100) NOT NULL,
+    stock int NOT NULL,
+    dealType int NOT NULL,
+    commodityCredit double(15,2) NOT NULL default 0.00,
+    FOREIGN KEY (mailofseller) REFERENCES user(email)
+    )
+
+//订单表
+create table order_table(
+    orderID int PRIMARY KEY AUTO_INCREMENT,
+    commodityID int NOT NULL,
+    itemNum int NOT NULL,
+    mailOfbuyer varchar(50) NOT NULL,
+    mailOfseller varchar(50) NOT NULL,
+    deposit double(15,2) NOT NULL,
+    dealType int NOT NULL,
+    FOREIGN KEY (commodityID) REFERENCES commodity(commodityID),
+    FOREIGN KEY (mailOfbuyer) REFERENCES user(email),
+    FOREIGN KEY (mailOfseller) REFERENCES user(email)
+    )
+
+//团购表
+create table collective_buying(
+    ID int PRIMARY KEY AUTO_INCREMENT,
+    commodityID int NOT NULL,
+    deadLine DATE NOT NULL,
+    activeNum int NOT NULL,
+    collectivePrice double(15,2) NOT NULL,
+    mailOfparticipants text,
+    currentNum int NOT NULL,
+    FOREIGN KEY (commodityID) REFERENCES commodity(commodityID)
+    )
+
+//竞拍表
+create table auction(
+    ID int PRIMARY KEY AUTO_INCREMENT,
+    commodityID int NOT NULL,
+    deadLine DATE NOT NULL,
+    activePrice double(15,2) NOT NULL,
+    currentPrice double(15,2),
+    currentMail varchar(50),
+    mailOfparticipants text,
+    FOREIGN KEY (commodityID) REFERENCES commodity(commodityID),
+    FOREIGN KEY (currentMail) REFERENCES user(email)
+    )
+
+//个人评论表
+create table personal_comment(
+    personalCommentID int PRIMARY KEY AUTO_INCREMENT,
+    commodityID int NOT NULL,
+    personalComment varchar(500) NOT NULL,
+    personalPoint double(15,2) NOT NULL,
+    email varchar(50) NOT NULL,
+    FOREIGN KEY (email) REFERENCES user(email),
+    FOREIGN KEY (commodityID) REFERENCES commodity(commodityID)
+    )
+
+//兴趣小组
+create table group_table(
+    groupID int PRIMARY KEY AUTO_INCREMENT,
+    groupCredit double(15,2),
+    groupName varchar(50) NOT NULL,
+    memberNum int NOT NULL default 1,
+    master varchar(50) NOT NULL,
+    requstingMember text,
+    FOREIGN KEY (master) REFERENCES user(email)
+    )
+
+
+//小组评论表
+create table group_comment(
+    groupCommentID int PRIMARY KEY AUTO_INCREMENT,
+    commodityID int NOT NULL,
+    groupPoint double(15,2) NOT NULL,
+    groupComment varchar(500) NOT NULL,
+    email varchar(50) NOT NULL,
+    groupID int NOT NULL,
+    FOREIGN KEY (groupID) REFERENCES group_table(groupID),
+    FOREIGN KEY (email) REFERENCES user(email),
+    FOREIGN KEY (commodityID) REFERENCES commodity(commodityID)
+    )
+
+
+//小组用户映射表
+create table group_map(
+    groupID int NOT NULL,
+    mailOfmember varchar(50) NOT NULL,
+    FOREIGN KEY (groupID) REFERENCES group_table(groupID),
+    FOREIGN KEY (mailOfmember) REFERENCES user(email),
+    PRIMARY KEY(groupID, mailOfmember)
+    )
