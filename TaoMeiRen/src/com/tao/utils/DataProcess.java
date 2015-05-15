@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public abstract class DataProcess {
-	private Connection connection;
-	private DataConnection dataConnection;
-	private PreparedStatement preparedStatement;
-	private ResultSet resultSet;
+	protected Connection connection;
+	protected DataConnection dataConnection;
+	protected PreparedStatement preparedStatement;
+	protected ResultSet resultSet;
 	
 	public DataProcess(DataConnection dataConnection){
 		this.dataConnection = dataConnection;
@@ -23,5 +23,5 @@ public abstract class DataProcess {
 	}
 	
 	public abstract boolean execute(String sql);
-	
+	public abstract ResultSet executeQuery(String sql);
 }
