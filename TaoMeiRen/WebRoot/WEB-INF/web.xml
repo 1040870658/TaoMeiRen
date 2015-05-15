@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <welcome-file-list>  
-  <welcome-file>index.jsp</welcome-file>  
+  <welcome-file>/user/login.jsp</welcome-file>  
 </welcome-file-list>  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -34,20 +34,4 @@
     <url-pattern>/VerifyCodeServlet</url-pattern>
   </servlet-mapping>
 
-
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/LoginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RegistServlet</servlet-name>
-    <url-pattern>/RegistServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>VerifyCodeServlet</servlet-name>
-    <url-pattern>/VerifyCodeServlet</url-pattern>
-  </servlet-mapping>	
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
 </web-app>
