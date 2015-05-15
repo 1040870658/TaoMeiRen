@@ -18,7 +18,7 @@ local.properties
 .class
 *.class
 */*.class
-WebRoot/
+.project
 
 # External tool builders
 .externalToolBuilders/
