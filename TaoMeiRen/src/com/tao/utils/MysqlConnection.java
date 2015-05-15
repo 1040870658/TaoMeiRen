@@ -23,11 +23,10 @@ public class MysqlConnection implements DataConnection{
 			e.printStackTrace();
 			return null;
 		}
-		
 		try{
 			connection = DriverManager.getConnection(url, userName, password);
 		}catch(SQLException e){
-			e.printStackTrace();
+			System.out.println("connect failed");
 			return null;
 		}
 		return connection;

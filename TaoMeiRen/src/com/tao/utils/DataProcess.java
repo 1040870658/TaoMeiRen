@@ -15,7 +15,7 @@ public abstract class DataProcess {
 		this.dataConnection = dataConnection;
 		this.resultSet = null;
 		try {
-			connection = dataConnection.connect();
+			this.connection = dataConnection.connect();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -23,5 +23,5 @@ public abstract class DataProcess {
 	}
 	
 	public abstract boolean execute(String sql);
-	public abstract ResultSet executeQuery(String sql);
+	public abstract ResultSet executeQuery(String sql, String str);
 }

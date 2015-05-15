@@ -1,7 +1,10 @@
 package com.tao.service;
 
+import javax.enterprise.inject.New;
+
 import com.tao.dao.UserDao;
 import com.tao.model.User;
+import com.tao.utils.*;
 
 /**
  * User的业务逻辑层
@@ -9,20 +12,20 @@ import com.tao.model.User;
  *
  */
 public class UserService {
-	private UserDao userDao = new UserDao();
+	private UserDao userDao = new UserDao(new MySqlDataProcess(new MysqlConnection("jdbc:mysql://localhost:3306/TaoMeiRen", "root", "root")));
 	
 	/**
 	 * 注册功能
 	 * @param user
 	 * @throws UserException
 	 */
-	public void regist(User user) throws UserException {
+	public void regist(User user) throws Exception {
 		/*
 		 * 1. 使用用户名去查询，如果返回null，完成添加
 		 * 2. 如果返回的不是null，抛出异常！
 		 */
-		User _user = userDao.findByUsername(user.getUsername());
-		if(_user != null) throw new UserException("用户名" + user.getUsername() + ", 已被注册过了！");
+		User _user = userDao.findByUsername(user.getEmail());
+		if(_user != null) throw new Exception("用户名" + user.getEmail() + ", 已被注册过了！");
 		
 		userDao.add(user);
 	}
@@ -33,20 +36,20 @@ public class UserService {
 	 * @return
 	 * @throws UserException 
 	 */
-	public User login(User form) throws UserException {
+	public User login(User form) throws Exception {
 		/*
 		 * 1. 使用form中的username进行查询，得到User user
 		 */
-		User user = userDao.findByUsername(form.getUsername());
+		User user = userDao.findByUsername(form.getEmail());
 		/*
 		 * 2. 如果返回null，说明用户名不存在，抛出异常，异常信息为“用户名不存在”
 		 */
-		if(user == null) throw new UserException("用户名不存在！");
+		if(user == null) throw new Exception("用户名不存在！");
 		/*
 		 * 3. 比较user的password和form的password，如果不同，抛出异常，异常信息为“密码错误！”
 		 */
 		if(!form.getPassword().equals(user.getPassword())) {
-			throw new UserException("密码错误！");
+			throw new Exception("密码错误！");
 		}
 		
 		/*

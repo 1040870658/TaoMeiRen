@@ -5,16 +5,28 @@ package com.tao.model;
  *
  */
 public class User {
-	private String username;
+	private String email;
 	private String password;
-	private String verifyCode;
+	private double account;
+	private double buyercredit;
+	private double sellercredit;
 
-	public String getUsername() {
-		return username;
+	
+	public User() {
+	}
+	public User(String email,String password,double account,double buyercredit,double sellercredit){
+		this.email = email;
+		this.password = password;
+		this.account = account;
+		this.buyercredit = buyercredit;
+		this.sellercredit = sellercredit;
+	}
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -25,17 +37,26 @@ public class User {
 		this.password = password;
 	}
 
-	public String getVerifyCode() {
-		return verifyCode;
+
+	public double getAccount() {
+		return account;
 	}
 
-	public void setVerifyCode(String verifyCode) {
-		this.verifyCode = verifyCode;
+	public void setAccount(double account) {
+		this.account = account;
 	}
 
-	@Override
-	public String toString() {
-		return "User [username=" + username + ", password=" + password
-				+ ", verifyCode=" + verifyCode + "]";
+	public double getBuyerCredit() {
+		return buyercredit;
 	}
+
+	public void setBuyerCredit(double buyercredit) {
+		this.buyercredit = buyercredit;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "User [username=" + email + ", password=" + password
+//				+ ", verifyCode=" + verifyCode + "]";
+//	}
 }

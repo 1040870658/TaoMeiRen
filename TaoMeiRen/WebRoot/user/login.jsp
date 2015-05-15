@@ -23,7 +23,7 @@
 <p style="color: red; font-weight: 900">${msg }</p>
 <%--${pageContext.request.contextPath }/RegistServlet --%>
 <form action="<c:url value='/LoginServlet'/>" method="post">
-  用户名：<input type="text" name="username" value="${user.username }"/><br/>
+  用户名：<input type="text" name="email" value="${user.email }"/><br/>
   密　码：<input type="password" name="password" value="${user.password }"/><br/>
   <input type="submit" value="登录"/>
 </form>

@@ -12,11 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import cn.itcast.commons.CommonUtils;
 
 import com.tao.model.User;
-import com.tao.service.UserException;
 import com.tao.service.UserService;
 
 public class RegistServlet extends HttpServlet {
-
+	private String verifyCode;
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -47,7 +46,7 @@ public class RegistServlet extends HttpServlet {
 		Map<String,String> errors = new HashMap<String,String>();
 		
 		// 对用户名进行校验
-		String username = form.getUsername();//获取表单的username
+		String username = form.getEmail();//获取表单的username
 		if(username == null || username.trim().isEmpty()) {
 			errors.put("username", "用户名不能为空！");
 		} else if(username.length() < 3 || username.length() > 15) {
@@ -65,7 +64,7 @@ public class RegistServlet extends HttpServlet {
 		
 		// 对验证码进行校验
 		String sessionVerifyCode = (String) request.getSession().getAttribute("session_vcode");
-		String verifyCode = form.getVerifyCode();
+		String verifyCode = request.getParameter("verifyCode");
 		if(verifyCode == null || verifyCode.trim().isEmpty()) {
 			errors.put("verifyCode", "验证码不能为空！");
 		} else if(verifyCode.length() != 4) {
@@ -101,7 +100,7 @@ public class RegistServlet extends HttpServlet {
 			response.getWriter().print("<h1>注册成功！</h1><a href='" + 
 					request.getContextPath() + 
 					"/user/login.jsp" + "'>点击这里去登录</a>");
-		} catch (UserException e) {
+		} catch (Exception e) {
 			// 获取异常信息，保存到request域
 			request.setAttribute("msg", e.getMessage());
 			// 还要保存表单数据，到request域

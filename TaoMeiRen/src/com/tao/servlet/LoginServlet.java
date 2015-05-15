@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import cn.itcast.commons.CommonUtils;
 
 import com.tao.model.User;
-import com.tao.service.UserException;
 import com.tao.service.UserService;
 
 /**
@@ -34,11 +33,14 @@ public class LoginServlet extends HttpServlet {
 		 *   > 如果没有异常：保存返回值到session中，重定向到welcome.jsp
 		 */
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
+		System.out.println(form.getEmail());
+		System.out.println(form == null);
+		
 		try {
 			User user = userService.login(form);
 			request.getSession().setAttribute("sessionUser", user);
 			response.sendRedirect(request.getContextPath() + "/user/welcome.jsp");
-		} catch(UserException e) {
+		} catch(Exception e) {
 			request.setAttribute("msg", e.getMessage());
 			request.setAttribute("user", form);
 			request.getRequestDispatcher("/user/login.jsp").forward(request, response);

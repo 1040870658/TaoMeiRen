@@ -24,11 +24,14 @@ public class MySqlDataProcess extends DataProcess{
 	}
 
 	@Override
-	public ResultSet executeQuery(String sql) {
+	public ResultSet executeQuery(String sql, String str) {
 		// TODO Auto-generated method stub
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			ResultSet resultSet =  preparedStatement.executeQuery(sql);
+			
+            preparedStatement.setString(1, str);  
+  
+			ResultSet resultSet =  preparedStatement.executeQuery();
 			return resultSet;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

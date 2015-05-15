@@ -35,9 +35,9 @@
 <p style="color: red; font-weight: 900">${msg }</p>
 <%--${pageContext.request.contextPath }/RegistServlet --%>
 <form action="<c:url value='/RegistServlet'/>" method="post">
-  用户名：<input type="text" name="username" value="${user.username }"/>${errors.username }<br/>
+  用户名：<input type="text" name="email" value="${user.email }"/>${user.email }<br/>
   密　码：<input type="password" name="password" value="${user.password }"/>${errors.password }<br/>
-  验证码：<input type="text" name="verifyCode" value="${user.verifyCode }" size="3"/>
+  验证码：<input type="text" name="verifyCode" value="${verifyCode }" size="3"/>
         <img id="vCode" src="<c:url value='/VerifyCodeServlet'/>" border="2"/>
         <a href="javascript:_change()">换一张</a>${errors.verifyCode }<br/>
   <input type="submit" value="注册"/>
