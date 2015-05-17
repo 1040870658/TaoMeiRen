@@ -23,5 +23,5 @@ public abstract class DataProcess {
 	}
 	
 	public abstract boolean execute(String sql);
-	public abstract ResultSet executeQuery(String sql, String[] str);
+	public abstract ResultSet executeQuery(String sql, String str);
 }

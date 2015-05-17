@@ -25,8 +25,7 @@ public class UserDao {
 		}
 		String sql = "select * from user where email = ?";
 //		String sql = "select * from user";
-		String[] userInfo ={username};
-		ResultSet resultSet = dataProcess.executeQuery(sql,userInfo);
+		ResultSet resultSet = dataProcess.executeQuery(sql,username);
 		if(resultSet != null){
 			try {
 				resultSet.next();
