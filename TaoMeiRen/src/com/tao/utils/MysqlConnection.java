@@ -15,6 +15,11 @@ public class MysqlConnection implements DataConnection{
 		this.userName = userName;
 		this.password = password;
 	}
+	public MysqlConnection(){
+		this.url = "jdbc:mysql://localhost:3306/TaoMeiRen";
+		this.userName = "root";
+		this.password = "root";
+	}
 	public Connection connect() throws SQLException {
 		// TODO Auto-generated method stub
 		try{

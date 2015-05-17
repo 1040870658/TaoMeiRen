@@ -33,13 +33,16 @@ public class LoginServlet extends HttpServlet {
 		 *   > 如果没有异常：保存返回值到session中，重定向到welcome.jsp
 		 */
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
-		System.out.println(form.getEmail());
-		System.out.println(form == null);
+//		System.out.println(form.getEmail());
+//		System.out.println(form == null);
 		
 		try {
 			User user = userService.login(form);
-			request.getSession().setAttribute("sessionUser", user);
-			response.sendRedirect(request.getContextPath() + "/user/welcome.jsp");
+			request.setAttribute("sessionUser", user);
+			//System.out.println(user.getEmail());
+			//request.setAttribute("email", user.getEmail());
+	//		response.sendRedirect(request.getContextPath() + "/user/welcome.jsp");
+			request.getRequestDispatcher("/user/welcome.jsp").forward(request, response);
 		} catch(Exception e) {
 			request.setAttribute("msg", e.getMessage());
 			request.setAttribute("user", form);

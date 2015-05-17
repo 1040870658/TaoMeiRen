@@ -1,6 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page import = "com.tao.model.*" %>
 <%
-String name = request.getParameter("username");
+//String email = (String)request.getAttribute("email");
+User user=(User)request.getAttribute("sessionUser");
+String email=user.getEmail();
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -10,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>Hello,<%=name %>/title>
+    <title>Hello,<%=email%></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    Welcome ,<%=email%>
+    //User user = (User)request.getAttribute("sessionUser");=email%> <br>
   </body>
 </html>

@@ -1,10 +1,12 @@
 package com.tao.model;
 
+import java.io.Serializable;
+
 /**
  * 　实体类
  *
  */
-public class User {
+public class User implements Serializable{
 	private String email;
 	private String password;
 	private double account;
