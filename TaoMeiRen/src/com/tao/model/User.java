@@ -56,9 +56,9 @@ public class User implements Serializable{
 		this.buyercredit = buyercredit;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "User [username=" + email + ", password=" + password
-//				+ ", verifyCode=" + verifyCode + "]";
-//	}
+	@Override
+	public String toString() {
+		return "User [username=" + email + ", password=" + password
+				 + "]";
+	}
 }

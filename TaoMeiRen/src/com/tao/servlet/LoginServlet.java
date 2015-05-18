@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			User user = userService.login(form);
-			request.setAttribute("sessionUser", user);
+			request.getSession().setAttribute("sessionUser", user);
 			//System.out.println(user.getEmail());
 			//request.setAttribute("email", user.getEmail());
 	//		response.sendRedirect(request.getContextPath() + "/user/welcome.jsp");

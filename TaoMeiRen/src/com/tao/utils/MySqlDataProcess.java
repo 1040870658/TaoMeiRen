@@ -24,18 +24,34 @@ public class MySqlDataProcess extends DataProcess{
 	}
 
 	@Override
-	public ResultSet executeQuery(String sql, String str) {
+	public ResultSet executeQuery(String sql, Object... str) {
 		// TODO Auto-generated method stub
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			
-            preparedStatement.setString(1, str);  
-  
+			for(int i = 0;i != str.length;i ++){
+				preparedStatement.setObject(i+1, str[i]);  
+			}
 			ResultSet resultSet =  preparedStatement.executeQuery();
 			return resultSet;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			return null;
+		}
+	}
+
+	@Override
+	public boolean execute(String sql, Object...str ) {
+		// TODO Auto-generated method stub
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			for(int i = 0;i != str.length;i ++){
+				preparedStatement.setObject(i+1, str[i]);  
+			}
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return false;
 		}
 	}
 

@@ -3,6 +3,7 @@ package com.tao.service;
 import javax.enterprise.inject.New;
 
 import com.tao.dao.UserDao;
+import com.tao.model.Commodity;
 import com.tao.model.User;
 import com.tao.utils.*;
 
@@ -19,7 +20,6 @@ public class UserService {
 		userDao.add(user);
 	}
 
-	
 	public User login(User form) throws Exception {
 		
 		User user = userDao.findByUsername(form.getEmail());
@@ -29,7 +29,10 @@ public class UserService {
 		if(!form.getPassword().equals(user.getPassword())) {
 			throw new Exception("密码错误！");
 		}
-		
 		return user;
+	}
+	
+	public void sell(Commodity commodity){
+		
 	}
 }

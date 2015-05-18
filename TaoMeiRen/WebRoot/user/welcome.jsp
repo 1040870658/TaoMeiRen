@@ -2,7 +2,7 @@
 <%@ page import = "com.tao.model.*" %>
 <%
 //String email = (String)request.getAttribute("email");
-User user=(User)request.getAttribute("sessionUser");
+User user=(User)request.getSession().getAttribute("sessionUser");
 String email=user.getEmail();
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,6 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     Welcome ,<%=email%>
-    //User user = (User)request.getAttribute("sessionUser");=email%> <br>
+    <br>
   </body>
 </html>

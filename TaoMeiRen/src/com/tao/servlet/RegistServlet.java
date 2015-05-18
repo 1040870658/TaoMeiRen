@@ -21,31 +21,12 @@ public class RegistServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		// 依赖UserServlet
 		UserService userService = new UserService();
 		
-		/*
-		 * 1. 封装表单数据（封装到User对象中）
-		 * User里面的属性可以随便增加，同时在jsp页面上增加相应属性的标签
-		 *因为toBean()是将Map里面的key值对应到User里面的变量！！！！
-		 */
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
 		
-		
-		/*
-		 * 添加新任务（表单校验）
-		 * 1. 创建一个Map，用来装载所有的表单错误信息
-		 *   在校验过程中，如果失败，向map添加错误信息，其中key为表单字段名称
-		 * 2. 校验之后，查看map长度是否大于0，如果大于0，说明有错误信息，就是有错误！
-		 *   > 保存map到request中，保存form到request中，转发到regist.jsp
-		 * 
-		 * 3. 如果map为空，说明没有错误信息，向下执行！
-		 */
-		
-		// 用来装载所有错误信息
 		Map<String,String> errors = new HashMap<String,String>();
 		
-		// 对用户名进行校验
 		String username = form.getEmail();//获取表单的username
 		if(username == null || username.trim().isEmpty()) {
 			errors.put("username", "用户名不能为空！");

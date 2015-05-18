@@ -1,52 +1,51 @@
 package com.tao.dao;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.tao.model.Commodity;
 import com.tao.model.User;
 import com.tao.utils.*;
 
-/**
- * 数据类
- *
- */
-public class UserDao {
-	/**
-	 * 按用户名查询
-	 * @param username
-	 * @return
-	 */
-	private DataProcess dataProcess;
-	public UserDao(DataProcess dataProcess){
-		this.dataProcess = dataProcess;
+
+public class UserDao extends Dao{
+
+	public UserDao(DataProcess dataProcess) {
+		super(dataProcess);
 	}
+
 	public User findByUsername(String username) {
-		if(username == null) {
+		if (username == null) {
 			return null;
 		}
 		String sql = "select * from user where email = ?";
-//		String sql = "select * from user";
-		ResultSet resultSet = dataProcess.executeQuery(sql,username);
-		if(resultSet != null){
-			try {
-				resultSet.next();
-				User user = new User(
-						resultSet.getString("email"),
-						resultSet.getString("passwd"), 
-						resultSet.getDouble("account"),
-						resultSet.getDouble("buyerCredit"),
-						resultSet.getDouble("sellerCredit"));
+		// String sql = "select * from user";
+		String[] userInfo = { username };
+		ResultSet resultSet = dataProcess.executeQuery(sql, userInfo);
+		try {
+			while (resultSet.next()) {
+				User user = new User(resultSet.getString("email"),
+				resultSet.getString("passwd"),
+				resultSet.getDouble("account"),
+				resultSet.getDouble("buyerCredit"),
+				resultSet.getDouble("sellerCredit"));
 				return user;
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	/**
-	 * 添加用户
-	 * @param user
-	 */
-	public void add(User user) {
+
+	public void add(User user) throws SQLException {
+		String sql = "insert into user(email,passwd) values(?,?)";
+		PreparedStatement preparedStatement;
+		preparedStatement = dataProcess.getPreparedStatement(sql);
+		preparedStatement.setString(1, user.getEmail());
+		preparedStatement.setString(2, user.getPassword());
+		preparedStatement.executeUpdate();
 	}
+	
 }

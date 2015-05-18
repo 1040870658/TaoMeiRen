@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author ye
+ *
+ */
 public abstract class DataProcess {
 	protected Connection connection;
 	protected DataConnection dataConnection;
@@ -22,6 +26,27 @@ public abstract class DataProcess {
 		}
 	}
 	
+	public PreparedStatement getPreparedStatement() {
+		return preparedStatement;
+	}
+
+	public void setPreparedStatement(PreparedStatement preparedStatement) {
+		this.preparedStatement = preparedStatement;
+	}
+
+	public PreparedStatement getPreparedStatement(String sql) throws SQLException{
+		preparedStatement = connection.prepareStatement(sql);
+		return preparedStatement;
+	}
+	public ResultSet getResultSet() {
+		return resultSet;
+	}
+
+	public void setResultSet(ResultSet resultSet) {
+		this.resultSet = resultSet;
+	}
+
+	public abstract boolean execute(String sql,Object...str);
 	public abstract boolean execute(String sql);
-	public abstract ResultSet executeQuery(String sql, String str);
+	public abstract ResultSet executeQuery(String sql, Object...str);
 }
