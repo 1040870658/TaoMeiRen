@@ -1,7 +1,5 @@
 package com.tao.service;
 
-import javax.enterprise.inject.New;
-
 import com.tao.dao.UserDao;
 import com.tao.model.Commodity;
 import com.tao.model.User;
@@ -16,7 +14,6 @@ public class UserService {
 		
 		User _user = userDao.findByUsername(user.getEmail());
 		if(_user != null) throw new Exception("用户名" + user.getEmail() + ", 已被注册过了！");
-		
 		userDao.add(user);
 	}
 

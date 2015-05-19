@@ -41,11 +41,7 @@ public class UserDao extends Dao{
 
 	public void add(User user) throws SQLException {
 		String sql = "insert into user(email,passwd) values(?,?)";
-		PreparedStatement preparedStatement;
-		preparedStatement = dataProcess.getPreparedStatement(sql);
-		preparedStatement.setString(1, user.getEmail());
-		preparedStatement.setString(2, user.getPassword());
-		preparedStatement.executeUpdate();
+		dataProcess.execute(sql,user.getEmail(),user.getPassword());
 	}
 	
 }

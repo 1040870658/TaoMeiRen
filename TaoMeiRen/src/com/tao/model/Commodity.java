@@ -1,6 +1,9 @@
 package com.tao.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 import org.apache.taglibs.standard.lang.jstl.test.StaticFunctionTests;
 
@@ -10,14 +13,20 @@ public class Commodity {
 	private final static int AUCTION = 3;
 	private double commodityCredit;
 	private int id;
-	private ArrayList<String> imageUrl;
+	private ArrayList<String> imageUrl = new ArrayList<String>();
 	private String mailOfseller;
 	private double price;
 	private String name;
 	private String description;
 	private int stock;
 	private int type;
-	
+	public final static Map<String, Integer> TYPE = new HashMap<String, Integer>(){
+	};
+	static{
+		TYPE.put("一口价", FIX);
+		TYPE.put("团购",COLLECTIVE);
+		TYPE.put("竞拍", AUCTION);
+	}
 	public double getCommodityCredit() {
 		return commodityCredit;
 	}

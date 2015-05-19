@@ -10,8 +10,8 @@ public class CommodityDao extends Dao {
 	}
 
 	public boolean add(User user, Commodity commodity) {
-		final int cSize = 11;
-		String sql = "insert into Commodity values(?";
+		final int cSize = 9;
+		String sql = "insert into commodity values(?";
 		for (int i = 1; i != cSize; i++) {
 			sql += ",?";
 		}
@@ -22,10 +22,15 @@ public class CommodityDao extends Dao {
 			ImageUrl += element;
 			ImageUrl += ",";
 		}
-		return dataProcess.execute(sql, commodity.getId(), ImageUrl,
-				commodity.getMailOfseller(), commodity.getPrice(),
-				commodity.getDescription(), commodity.getName(),
-				commodity.getStock(), commodity.getType(),
+		return dataProcess.execute(sql,
+				commodity.getId(),
+				ImageUrl,
+				commodity.getMailOfseller(),
+				commodity.getPrice(),
+				commodity.getDescription(),
+				commodity.getName(),
+				commodity.getStock(), 
+				commodity.getType(),
 				commodity.getCommodityCredit());
 	}
 }

@@ -12,6 +12,8 @@ public class CommodityService {
 	private User user;
 	private Order order;
 	public Boolean registerCommodity(User user,Commodity commodity){
+		commodity.getImageUrl().add(user.getEmail());
+		commodity.setMailOfseller(user.getEmail());
 		boolean result = commodityDao.add(user,commodity);
 		return result;
 	}
