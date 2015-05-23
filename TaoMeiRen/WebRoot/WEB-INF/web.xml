@@ -31,14 +31,29 @@
   	<servlet-name>RegisterCommodityServlet</servlet-name>
   	<url-pattern>/RegisterCommodity</url-pattern>
   </servlet-mapping>
+
+ <servlet>
+ 	<servlet-name>TradeServlet</servlet-name>
+ 	<servlet-class>com.tao.servlet.TradeServlet</servlet-class>
+ </servlet>
+  <servlet-mapping>
+    <servlet-name>TradeServlet</servlet-name>
+    <url-pattern>/TradeServlet</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>VerifyCodeServlet</servlet-name>
     <servlet-class>com.tao.servlet.VerifyCodeServlet</servlet-class>
   </servlet>
-	
   <servlet-mapping>
     <servlet-name>VerifyCodeServlet</servlet-name>
     <url-pattern>/VerifyCodeServlet</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+  <servlet-name>SellerServlet</servlet-name>
+  <servlet-class>com.tao.servlet.SellerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>SellerServlet</servlet-name>
+  <url-pattern>/SellerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

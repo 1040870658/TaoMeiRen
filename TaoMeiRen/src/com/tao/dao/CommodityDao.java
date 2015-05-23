@@ -1,5 +1,8 @@
 package com.tao.dao;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import com.tao.model.Commodity;
 import com.tao.model.User;
 import com.tao.utils.DataProcess;
@@ -32,5 +35,11 @@ public class CommodityDao extends Dao {
 				commodity.getStock(), 
 				commodity.getType(),
 				commodity.getCommodityCredit());
+	}
+	public ResultSet query(User user){
+		String sql = "select * from commodity where mailOfseller = ?";
+		String selection = user.getEmail();
+		ResultSet resultSet = dataProcess.executeQuery(sql, selection);
+		return resultSet;
 	}
 }

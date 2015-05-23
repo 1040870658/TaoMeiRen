@@ -1,8 +1,8 @@
 package com.tao.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Order {
+public class Order implements Serializable{
 	private int id;
 	private int commodityID;
 	private int itemNum;

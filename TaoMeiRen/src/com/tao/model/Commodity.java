@@ -1,16 +1,14 @@
 package com.tao.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
-import org.apache.taglibs.standard.lang.jstl.test.StaticFunctionTests;
-
-public class Commodity {
-	private final static int FIX = 1;
-	private final static int COLLECTIVE = 2;
-	private final static int AUCTION = 3;
+public class Commodity implements Serializable{
+	public final static int FIX = 1;
+	public final static int COLLECTIVE = 2;
+	public final static int AUCTION = 3;
 	private double commodityCredit;
 	private int id;
 	private ArrayList<String> imageUrl = new ArrayList<String>();
@@ -20,8 +18,7 @@ public class Commodity {
 	private String description;
 	private int stock;
 	private int type;
-	public final static Map<String, Integer> TYPE = new HashMap<String, Integer>(){
-	};
+	public final static Map<String, Integer> TYPE = new HashMap<String, Integer>();
 	static{
 		TYPE.put("一口价", FIX);
 		TYPE.put("团购",COLLECTIVE);

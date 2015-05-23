@@ -21,7 +21,7 @@ public class User implements Serializable{
 		this.password = password;
 		this.account = account;
 		this.buyercredit = buyercredit;
-		this.sellercredit = sellercredit;
+		this.setSellercredit(sellercredit);
 	}
 	public String getEmail() {
 		return email;
@@ -60,5 +60,11 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [username=" + email + ", password=" + password
 				 + "]";
+	}
+	public void setSellercredit(double sellercredit) {
+		this.sellercredit = sellercredit;
+	}
+	public double getSellercredit() {
+		return sellercredit;
 	}
 }

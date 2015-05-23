@@ -41,6 +41,7 @@ public class RegisterCommodityServlet extends HttpServlet{
 		else{
 			request.setAttribute("msg", "failed");
 		}
+		response.sendRedirect(request.getContextPath()+"/user/seller.jsp");
 	}
 
 	@Override

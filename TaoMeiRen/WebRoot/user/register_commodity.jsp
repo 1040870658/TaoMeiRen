@@ -35,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			 <input type="radio" name="dealtype" value="团购"/>团购
  			 <input type="radio" name="dealtype" value="竞拍"/>竞拍<br/>
  <h2>商品描述：</h2><textarea  name="description" cols="80" rows="10">${commodity.description }</textarea><br/></br>
+ <h2 id = "deadline">活动截止日期：<input  type ="text" name = "deadline" ></h2><br/>
+ <h2 id = "active_num">团购最低人数：<input type ="text" name = "active_num" ></h2><br/>
+ <h2 id = "active_price">竞拍最低价格：<input type ="text" name = "active_price" ></h2><br/>
   <input type="submit" value="登记"/>
 </form>
   </body>
