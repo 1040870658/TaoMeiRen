@@ -37,7 +37,8 @@ public class UploadServlet extends HttpServlet {
 			/*
 			 * 1. 得到文件保存的路径
 			 */
-			String root = this.getServletContext().getRealPath("/WEB-INF/files/");
+//			String root = this.getServletContext().getRealPath("/WEB-INF/files/");
+			String root = request.getContextPath()+"/WEB-INF/files/";
 System.out.println(root);
 			/*
 			 * 2. 生成二层目录
