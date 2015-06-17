@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <welcome-file-list>  
-  <welcome-file>/user/login.jsp</welcome-file>  
+  <welcome-file>/shop/main.jsp</welcome-file>  
 </welcome-file-list> 
   <servlet>
   	<servlet-name>RegisterCommodityServlet</servlet-name>
@@ -18,6 +18,15 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>AcceptServlet</servlet-name>
+    <servlet-class>com.tao.servlet.AcceptServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcceptServlet</servlet-name>
+    <url-pattern>/AcceptServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>RegistServlet</servlet-name>
@@ -55,5 +64,182 @@
   <servlet-mapping>
   <servlet-name>SellerServlet</servlet-name>
   <url-pattern>/SellerServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.tao.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BuyerServlet</servlet-name>
+    <servlet-class>com.tao.servlet.BuyerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuyerServlet</servlet-name>
+    <url-pattern>/BuyerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.tao.servlet.UploadImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/UploadImageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SellerDetailServlet</servlet-name>
+    <servlet-class>com.tao.servlet.SellerDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SellerDetailServlet</servlet-name>
+    <url-pattern>/SellerDetailServlet</url-pattern>
+  </servlet-mapping>
+  <filter> 
+    <filter-name>loginFilter</filter-name> 
+    <filter-class>com.tao.servlet.LoginFilter</filter-class> 
+  </filter> 
+  <filter-mapping> 
+    <filter-name>loginFilter</filter-name> 
+    <url-pattern>/individual.jsp</url-pattern> 
+  </filter-mapping> 
+  
+  <servlet>
+    <servlet-name>DisplayServlet</servlet-name>
+    <servlet-class>com.tao.servlet.DisplayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayServlet</servlet-name>
+    <url-pattern>/DisplayServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShopItemServlet</servlet-name>
+    <servlet-class>com.tao.servlet.ShopItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShopItemServlet</servlet-name>
+    <url-pattern>/ShopItemServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CommodityDetailServlet</servlet-name>
+    <servlet-class>com.tao.servlet.CommodityDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommodityDetailServlet</servlet-name>
+    <url-pattern>/CommodityDetailServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>OrderDetailServlet</servlet-name>
+    <servlet-class>com.tao.servlet.OrderDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderDetailServlet</servlet-name>
+    <url-pattern>/OrderDetailServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>BuyerDetailServlet</servlet-name>
+    <servlet-class>com.tao.servlet.BuyerDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuyerDetailServlet</servlet-name>
+    <url-pattern>/BuyerDetailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SendServlet</servlet-name>
+    <servlet-class>com.tao.servlet.SendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendServlet</servlet-name>
+    <url-pattern>/SendServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ConfirmServlet</servlet-name>
+    <servlet-class>com.tao.servlet.ConfirmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmServlet</servlet-name>
+    <url-pattern>/ConfirmServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>BookServlet</servlet-name>
+    <servlet-class>com.tao.servlet.BookCollectionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookServlet</servlet-name>
+    <url-pattern>/BookServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>AuctionTradeServlet</servlet-name>
+    <servlet-class>com.tao.servlet.AuctionTradeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuctionTradeServlet</servlet-name>
+    <url-pattern>/AuctionTradeServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>CommentServlet</servlet-name>
+    <servlet-class>com.tao.servlet.CommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommentServlet</servlet-name>
+    <url-pattern>/CommentServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>FriendServlet</servlet-name>
+    <servlet-class>com.tao.servlet.FriendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FriendServlet</servlet-name>
+    <url-pattern>/FriendServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>InviteServlet</servlet-name>
+    <servlet-class>com.tao.servlet.InviteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InviteServlet</servlet-name>
+    <url-pattern>/InviteServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>IndividualServlet</servlet-name>
+    <servlet-class>com.tao.servlet.IndividualServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndividualServlet</servlet-name>
+    <url-pattern>/IndividualServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SetupGroupServlet</servlet-name>
+    <servlet-class>com.tao.servlet.SetupGroupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetupGroupServlet</servlet-name>
+    <url-pattern>/SetupGroupServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>DropServlet</servlet-name>
+    <servlet-class>com.tao.servlet.DropServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DropServlet</servlet-name>
+    <url-pattern>/DropServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>com.tao.servlet.SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/SearchServlet</url-pattern>
   </servlet-mapping>
 </web-app>

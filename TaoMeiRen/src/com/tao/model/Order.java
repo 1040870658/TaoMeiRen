@@ -3,6 +3,8 @@ package com.tao.model;
 import java.io.Serializable;
 
 public class Order implements Serializable{
+	public static int BUYER = 0;
+	public static int SELLER = 1;
 	private int id;
 	private int commodityID;
 	private int itemNum;
@@ -11,6 +13,16 @@ public class Order implements Serializable{
 	private double deposit;
 	private int dealType;
 	
+	public Order(){}
+	public Order(int id,int commodityID,int itemNum,String mailOfbuyer,String mailOfseller,double deposit,int dealtype){
+		this.id = id;
+		this.commodityID =  commodityID;
+		this.itemNum = itemNum;
+		this.mailOfbuyer = mailOfbuyer;
+		this.mailOfseller = mailOfseller;
+		this.dealType = dealtype;
+		this.deposit = deposit;
+	}
 	public int getId() {
 		return id;
 	}

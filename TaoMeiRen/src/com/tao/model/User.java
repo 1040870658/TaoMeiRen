@@ -67,4 +67,5 @@ public class User implements Serializable{
 	public double getSellercredit() {
 		return sellercredit;
 	}
+	
 }

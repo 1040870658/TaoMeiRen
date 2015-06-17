@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+#apDiv1{
+	background-repeat:no-repeat;
+	//background-image:url(../image/yuexiuya.jpg);
+	position:absolute;
+	width:200px;
+	height:200px;
+	z-index:1;
+	left: 700px;
+	top: 205px;
+}
+body{
+	background-repeat:no-repeat;
+	background-image:url(../image/login.jpg);
+	background-position:center;
+	background-attachment:fixed;
+	background-size:120%
+}
+label{
+	font-family:Arial, Helvetica, sans-serif;
+	font-style:italic;
+	font-size:inherit;color:#663;
+}
+select{
+	font-family:Arial, Helvetica, sans-serif;
+	font-style:italic;
+	font-size:9px;color:#663;
+}
+#psd{
+	background-color:transparent;
+	color:white;
+}
+#name{
+	background-color:transparent;
+	color:white;
+}
+#btn{
+	background-color:#369;
+	font-family:"Courier New", Courier, monospace;color:#FFF;
+}
+#btn:hover{
+	color:blue;
+	background:white;
+}

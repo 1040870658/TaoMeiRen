@@ -34,6 +34,7 @@ public class MySqlDataProcess extends DataProcess{
 			return resultSet;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -45,13 +46,12 @@ public class MySqlDataProcess extends DataProcess{
 			preparedStatement = connection.prepareStatement(sql);
 			for(int i = 0;i != str.length;i ++){
 				preparedStatement.setObject(i+1, str[i]);  
-				System.out.println(str[i]);
 			}
 			preparedStatement.executeUpdate();
-			System.out.println("true");
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			System.out.println("false");
 			return false;
 		}

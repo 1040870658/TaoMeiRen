@@ -14,7 +14,6 @@ public abstract class DataProcess {
 	protected DataConnection dataConnection;
 	protected PreparedStatement preparedStatement;
 	protected ResultSet resultSet;
-	
 	public DataProcess(DataConnection dataConnection){
 		this.dataConnection = dataConnection;
 		this.resultSet = null;

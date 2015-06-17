@@ -1,13 +1,17 @@
 package com.tao.service;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.tao.dao.UserDao;
 import com.tao.model.Commodity;
+import com.tao.model.Order;
 import com.tao.model.User;
 import com.tao.utils.*;
 
 
 public class UserService {
-	private UserDao userDao = new UserDao(new MySqlDataProcess(new MysqlConnection()));
+	private UserDao userDao = new UserDao(new MySqlDataProcess(MysqlConnection.getInstance()));
 	
 	
 	public void regist(User user) throws Exception {
@@ -29,7 +33,40 @@ public class UserService {
 		return user;
 	}
 	
-	public void sell(Commodity commodity){
-		
+	public void sell(Order order,User user){
+		user.setAccount(user.getAccount()+order.getDeposit());
+		userDao.earn(user);
+	}
+	
+	public boolean cost(User user,double price){
+		if (user.getAccount() < price) {
+			return false;
+		} else {
+			userDao.cost(user, price);
+			return true;
+		}
+	}
+	public void returnDeposit(double deposit,User user){
+		user.setAccount(user.getAccount()+deposit);
+		userDao.earn(user);
+	}
+	public User queryUser(String email){
+		ResultSet resultSet = userDao.queryUser(email);
+		try {
+			while(resultSet.next()){
+				User user = new User();
+				user.setEmail(email);
+				user.setAccount(resultSet.getDouble("account"));
+				user.setBuyerCredit(resultSet.getDouble("buyerCredit"));
+				user.setSellercredit(resultSet.getDouble("sellerCredit"));
+				user.setPassword(resultSet.getString("passwd"));
+				return user;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return null;
 	}
 }

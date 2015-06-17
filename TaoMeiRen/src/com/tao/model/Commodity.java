@@ -9,6 +9,7 @@ public class Commodity implements Serializable{
 	public final static int FIX = 1;
 	public final static int COLLECTIVE = 2;
 	public final static int AUCTION = 3;
+	public final static int SENDED = 4;
 	private double commodityCredit;
 	private int id;
 	private ArrayList<String> imageUrl = new ArrayList<String>();

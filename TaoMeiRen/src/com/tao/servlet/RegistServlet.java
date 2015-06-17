@@ -30,11 +30,10 @@ public class RegistServlet extends HttpServlet {
 		String username = form.getEmail();//获取表单的username
 		if(username == null || username.trim().isEmpty()) {
 			errors.put("username", "用户名不能为空！");
-		} else if(username.length() < 3 || username.length() > 15) {
+		} else if(username.length() < 3 || username.length() > 25) {
 			errors.put("username", "用户名长度必须在3~15之间！");
 		}
 		
-		// 对密码进行校验
 		String password = form.getPassword();
 		if(password == null || password.trim().isEmpty()) {
 			errors.put("password", "密码不能为空！");
@@ -43,7 +42,6 @@ public class RegistServlet extends HttpServlet {
 		}
 		
 		
-		// 对验证码进行校验
 		String sessionVerifyCode = (String) request.getSession().getAttribute("session_vcode");
 		String verifyCode = request.getParameter("verifyCode");
 		if(verifyCode == null || verifyCode.trim().isEmpty()) {
@@ -54,40 +52,20 @@ public class RegistServlet extends HttpServlet {
 			errors.put("verifyCode", "验证码错误！");
 		}
 		
-		/*
-		 * 判断map是否为空，不为空，说明存在错误
-		 */
 		if(errors != null && errors.size() > 0) {
-			/*
-			 * 1. 保存errors到request域
-			 * 2. 保存form到request域，为了回显
-			 * 3. 转发到regist.jsp
-			 */
-			request.setAttribute("errors", errors);
-			request.setAttribute("user", form);
-			request.getRequestDispatcher("/user/regist.jsp").forward(request, response);
+			request.getSession().setAttribute("msg", errors.get("verifyCode"));
+			response.sendRedirect("user/regist.jsp");
 			return;
 		}
 		
-		
-		
-		/*
-		 * 2. 调用userService的regist()方法，传递form过去
-		 * 3. 得到异常：获取异常信息，保存到request域，转发到regist.jsp中显示
-		 * 4. 没有异常：输出注册成功！
-		 */
 		try {
+			request.getSession().setAttribute("msg",null );
 			userService.regist(form);
-			response.getWriter().print("<h1>注册成功！</h1><a href='" + 
-					request.getContextPath() + 
-					"/user/login.jsp" + "'>点击这里去登录</a>");
+			response.sendRedirect("user/success.jsp");
 		} catch (Exception e) {
-			// 获取异常信息，保存到request域
-			request.setAttribute("msg", e.getMessage());
-			// 还要保存表单数据，到request域
-			request.setAttribute("user", form);//用来在表单中回显！
-			// 转发到regist.jsp
-			request.getRequestDispatcher("/user/regist.jsp").forward(request, response);
+			request.getSession().setAttribute("msg", e.getMessage());
+			//request.getRequestDispatcher("/user/regist.jsp").forward(request, response);
+			response.sendRedirect("user/regist.jsp");
 		}
 	}
 

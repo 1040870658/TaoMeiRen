@@ -1,0 +1,20 @@
+#btn{
+	background-color:#369;
+	font-family:"Courier New", Courier, monospace;color:#FFF;
+}
+#btn:hover{
+	color:blue;
+	background:white;
+}
+#big_btn{
+	background-color:#D9FFFF;
+	margin-top: 60; 
+	margin-left: 60;
+	width: 250px;
+	height: 250px;
+}
+#big_btn:hover{
+	color:#FF8000;
+	background:white;	
+}
+	

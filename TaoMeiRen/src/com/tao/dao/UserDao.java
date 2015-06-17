@@ -43,5 +43,19 @@ public class UserDao extends Dao{
 		String sql = "insert into user(email,passwd) values(?,?)";
 		dataProcess.execute(sql,user.getEmail(),user.getPassword());
 	}
-	
+	public void cost(User user,double cost){
+		String sql = "update user set account = ? where email = ?";
+		double price = user.getAccount()-cost;
+		dataProcess.execute(sql, price,user.getEmail());
+	}
+	public void earn(User user){
+		System.out.println("earn:"+user.getAccount());
+		String sql = "update user set account = ? where email = ?";
+		double price = user.getAccount();
+		dataProcess.execute(sql, price,user.getEmail());
+ 	}
+	public ResultSet queryUser(String email){
+		String sql = "select * from user where email = ?";
+		return dataProcess.executeQuery(sql, email);
+	}
 }

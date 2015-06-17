@@ -1,4 +1,4 @@
-//使用MySQL数据库
+﻿//使用MySQL数据库
 
 //创建数据库
 create database TaoMeiRen;
@@ -43,7 +43,7 @@ create table order_table(
     )
 
 //团购表
-create table collective_buying(
+create table collection(
     ID int PRIMARY KEY AUTO_INCREMENT,
     commodityID int NOT NULL,
     deadLine DATE NOT NULL,
@@ -111,4 +111,24 @@ create table group_map(
     FOREIGN KEY (groupID) REFERENCES group_table(groupID),
     FOREIGN KEY (mailOfmember) REFERENCES user(email),
     PRIMARY KEY(groupID, mailOfmember)
+    )
+
+create table collection_table(
+    orderID int PRIMARY KEY AUTO_INCREMENT,
+    commodityID int NOT NULL,
+    itemNum int NOT NULL,
+    mailOfbuyer varchar(50) NOT NULL,
+    mailOfseller varchar(50) NOT NULL,
+    deposit double(15,2) NOT NULL,
+    dealType int NOT NULL,
+    FOREIGN KEY (commodityID) REFERENCES commodity(commodityID),
+    FOREIGN KEY (mailOfbuyer) REFERENCES user(email),
+    FOREIGN KEY (mailOfseller) REFERENCES user(email)
+    )
+create table relationship(
+    relation int NOT NULL,
+    host varchar(50) NOT NULL,
+    guest varchar(50) NOT NULL,
+    FOREIGN KEY (host) REFERENCES user(email),
+    FOREIGN KEY (guest) REFERENCES user(email)
     )

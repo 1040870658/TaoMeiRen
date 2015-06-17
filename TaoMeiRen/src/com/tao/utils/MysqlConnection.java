@@ -4,18 +4,23 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class MysqlConnection implements DataConnection{
+	private static DataConnection mysqlConnection = new MysqlConnection();
 	private Connection connection;
 	private String url;
 	private String userName;
 	private String password;
 	
-	public MysqlConnection(String url,String userName,String password){
+	public static DataConnection getInstance(){
+		return mysqlConnection;
+	}
+	private MysqlConnection(String url,String userName,String password){
 		this.url = url;
 		this.userName = userName;
 		this.password = password;
 	}
-	public MysqlConnection(){
+	private MysqlConnection(){
 		this.url = "jdbc:mysql://localhost:3306/TaoMeiRen";
 		this.userName = "root";
 		this.password = "root";

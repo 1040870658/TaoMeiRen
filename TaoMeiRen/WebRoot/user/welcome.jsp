@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page import = "com.tao.model.*" %>
 <%
 //String email = (String)request.getAttribute("email");
@@ -27,8 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
-    Welcome ,<%=email%>
-    <br>
+  <body bgcolor = RGB(255,255,204)>
+  <center>
+  <div align = center style = "margin-top : 20%">
+    <font face="幼圆" size = 7 >Welcome ,<%=email%></font>
+  </div>
+  </center>
   </body>
 </html>

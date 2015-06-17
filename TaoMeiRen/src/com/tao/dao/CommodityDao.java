@@ -19,7 +19,6 @@ public class CommodityDao extends Dao {
 			sql += ",?";
 		}
 		sql += ")";
-		System.out.println(sql);
 		String ImageUrl = "";
 		for (String element : commodity.getImageUrl()) {
 			ImageUrl += element;
@@ -40,6 +39,53 @@ public class CommodityDao extends Dao {
 		String sql = "select * from commodity where mailOfseller = ?";
 		String selection = user.getEmail();
 		ResultSet resultSet = dataProcess.executeQuery(sql, selection);
+		return resultSet;
+	}
+	public ResultSet queryAll(){
+		String sql = "select * from commodity";
+		ResultSet resultSet = dataProcess.executeQuery(sql);
+		return resultSet;
+	}
+	public void remove(Commodity commodity){
+		String sql = "update commodity set stock = ? where commodityID = ?";
+		dataProcess.execute(sql,commodity.getStock(),commodity.getId());
+	
+	}
+	public void delete(Commodity commodity){
+		if(commodity.getStock() <= 0){
+			String sql = "delete from collection where commodityID = ?";
+			dataProcess.execute(sql, commodity.getId());
+			sql = "delete from auction where commodityID = ?";
+			dataProcess.execute(sql,commodity.getId());
+			sql = "delete from commodity where commodityID = ?";
+			dataProcess.execute(sql,commodity.getId());
+		}
+	}
+	public void drop(Commodity commodity){
+		String sql = "delete from collection where commodityID = ?";
+		dataProcess.execute(sql, commodity.getId());
+		sql = "delete from auction where commodityID = ?";
+		dataProcess.execute(sql,commodity.getId());
+		sql = "delete from commodity where commodityID = ?";
+		dataProcess.execute(sql,commodity.getId());
+	}
+	public ResultSet quertyCommodity(int id){
+		String sql = "select * from commodity where commodityID = ?";
+		ResultSet resultSet = dataProcess.executeQuery(sql, id);
+		return resultSet;
+	}
+	public ResultSet quertyCommodity(String commodityName){
+		String sql = "select * from commodity where name = ?";
+		ResultSet resultSet = dataProcess.executeQuery(sql, commodityName);
+		return resultSet;
+	}
+	public void updateType(int id,int type){
+		String sql = "update commodity set dealType = ? where commodityID = ?";
+		dataProcess.execute(sql,type,id);
+	}
+	public ResultSet quertyCommodity(){
+		String sql = "select max(commodityID) from commodity";
+		ResultSet resultSet = dataProcess.executeQuery(sql);
 		return resultSet;
 	}
 }

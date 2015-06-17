@@ -1,0 +1,67 @@
+body {
+	background-repeat: no-repeat;
+	background-image: url(../image/yalian2.jpg);
+}
+#apDiv1 {
+	position:absolute;
+	width:226px;
+	height:45px;
+	z-index:1;
+	left: 934px;
+	top: 200px;
+	font-family: "微软雅黑";
+	font-size: xx-large;
+	text-align: center;
+	color: #CCC;
+	font-weight: bold;
+	background-color: #003366;
+	cursor:default;
+	visibility: visible;
+}
+#apDiv2{
+	position:absolute;
+	width:226px;
+	height:45px;
+	z-index:1;
+	left: 884px;
+	top: 270px;
+	font-family: "微软雅黑";
+	font-size: xx-large;
+	text-align: center;
+	color: #CCC;
+	font-weight: bold;
+	background-color: #003366;
+	cursor:default;
+	visibility: visible;
+}
+#apDiv3{
+	position:absolute;
+	width:226px;
+	height:45px;
+	z-index:1;
+	left: 834px;
+	top: 340px;
+	font-family: "微软雅黑";
+	font-size: xx-large;
+	text-align: center;
+	color: #CCC;
+	font-weight: bold;
+	background-color: #003366;
+	cursor:default;
+	visibility: visible;
+}
+a:link {
+	text-decoration: none;
+	color: #CCC;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCC;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+

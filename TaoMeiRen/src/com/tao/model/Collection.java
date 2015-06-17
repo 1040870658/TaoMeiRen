@@ -2,17 +2,33 @@ package com.tao.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Collection implements Serializable{
 	private int collectionID;
 	private Commodity commodity;
-	private Date deadline;
+	private Timestamp deadline;
 	private int activeNum;
 	private int currentNum;
 	private double collectivePrice;
 	private ArrayList<String> mailOfparticipants;
 	
+	
+	public Collection(int collectionID, Commodity commodity, Timestamp deadline,
+			int activeNum, int currentNum, double collectivePrice,
+			ArrayList<String> mailOfparticipants) {
+		super();
+		this.collectionID = collectionID;
+		this.commodity = commodity;
+		this.deadline = deadline;
+		this.activeNum = activeNum;
+		this.currentNum = currentNum;
+		this.collectivePrice = collectivePrice;
+		this.mailOfparticipants = mailOfparticipants;
+	}
+	public Collection(){super();}
 	public int getCollectionID() {
 		return collectionID;
 	}
@@ -25,10 +41,10 @@ public class Collection implements Serializable{
 	public void setCommodity(Commodity commodity) {
 		this.commodity = commodity;
 	}
-	public Date getDeadline() {
+	public Timestamp getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(Date deadline) {
+	public void setDeadline(Timestamp deadline) {
 		this.deadline = deadline;
 	}
 	public int getActiveNum() {

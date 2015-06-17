@@ -12,7 +12,7 @@ public class TestResultet {
 
 	@Test
 	public void testSet() {
-		UserDao userDao = new UserDao(new MySqlDataProcess(new MysqlConnection("jdbc:mysql://localhost:3306/TaoMeiRen", "root", "root")));
+		UserDao userDao = new UserDao(new MySqlDataProcess(MysqlConnection.getInstance()));
 		User user = userDao.findByUsername("1040870658@qq.com");
 //		System.out.println(user == null );
 		System.out.println(user.getEmail());

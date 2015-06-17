@@ -12,6 +12,22 @@ public class Auction implements Serializable{
 	private String currentMail;
 	private ArrayList<String> mailOfparticipants;
 	private int auctionID;
+	
+	public Auction(Commodity commodity, Date deadline, double activePrice,
+			double currentPrice, String currentMail,
+			ArrayList<String> mailOfparticipants, int auctionID) {
+		super();
+		this.commodity = commodity;
+		this.deadline = deadline;
+		this.activePrice = activePrice;
+		this.currentPrice = currentPrice;
+		this.currentMail = currentMail;
+		this.mailOfparticipants = mailOfparticipants;
+		this.auctionID = auctionID;
+	}
+	public Auction() {
+		// TODO Auto-generated constructor stub
+	}
 	public Commodity getCommodity() {
 		return commodity;
 	}
